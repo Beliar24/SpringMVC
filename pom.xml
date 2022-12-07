@@ -81,8 +81,8 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.6</version>
                 <configuration>
-                    <warSourceDirectory>src/main/webapp</warSourceDirectory>
-                    <warName>SpringMVC</warName>
+<!--                    <warSourceDirectory>src/main/webapp</warSourceDirectory>-->
+<!--                    <warName>SpringMVC</warName>-->
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
