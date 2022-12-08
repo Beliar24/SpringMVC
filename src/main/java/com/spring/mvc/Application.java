@@ -12,24 +12,24 @@ import java.util.Date;
 
 public class Application {
     public static void main(String[] args) {
-//
-//        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfiguration.class);
-//
-//        BookingFacade facade = context.getBean("bookingFacade", BookingFacade.class);
-//
-//        UserImpl user = new UserImpl("Nick", 1L, "email@gmail.com");
-//
-//        EventImpl event = new EventImpl(2L, "Title", new Date());
-//
-//        Ticket ticket = new TicketImpl(3L, event, user, 24, Ticket.Category.STANDARD);
-//
-//        facade.createUser(user);
-//        facade.createEvent(event);
-//        facade.createTicket(ticket);
-//
-//        System.out.println(facade.getBookedTickets(ticket));
-//
-//        facade.cancelTicket(ticket);
+
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfiguration.class);
+
+        BookingFacade facade = context.getBean("bookingFacade", BookingFacade.class);
+
+        UserImpl user = new UserImpl("Nick", 1L, "email@gmail.com");
+
+        EventImpl event = new EventImpl(2L, "Title", new Date());
+
+        Ticket ticket = new TicketImpl(3L, event, user, 24, Ticket.Category.STANDARD);
+
+        facade.createUser(user);
+        facade.createEvent(event);
+        facade.createTicket(ticket);
+
+        System.out.println(facade.getBookedTickets(ticket));
+
+        facade.cancelTicket(ticket);
 
     }
 }
