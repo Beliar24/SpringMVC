@@ -1,4 +1,3 @@
-<jsp:useBean id="Users" scope="request" type="com.spring.mvc.dao.UserImpl"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,9 +5,9 @@
 </head>
 <body>
 
-Name - ${Users.name}
+Name - <span th:text="${userName}"></span>
 <br>
-Email - ${Users.email}
+Email - <span th:text="${userEmail}"></span>
 
 <br><br>
 <a href="createEvent">Create Event</a>
