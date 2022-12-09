@@ -19,7 +19,7 @@ public class EventService {
         eventRepository.crateEvent(event);
     }
 
-    public Event getEvent(Event event) {
-        return eventRepository.getEvent(event.getTitle());
+    public Event getEvent(String title) {
+        return eventRepository.getEvent(title);
     }
 }

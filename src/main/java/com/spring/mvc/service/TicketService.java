@@ -19,8 +19,8 @@ public class TicketService {
         ticketRepository.createTicket(ticket);
     }
 
-    public Ticket getTicket(Ticket ticket) {
-        return ticketRepository.getTicket(ticket.getId());
+    public Ticket getTicket(Long id) {
+        return ticketRepository.getTicket(id);
     }
 
     public void cancelTicket(Ticket ticket) {

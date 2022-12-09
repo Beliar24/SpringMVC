@@ -6,17 +6,17 @@ import com.spring.mvc.model.User;
 
 public interface Booking {
     
-    Event getEventsByTitle(Event event);
+    Event getEventsByTitle(String title);
     
     void createEvent(Event event);
     
-    User getUsersByName(User user);
+    User getUsersByName(String name);
     
     void createUser(User user);
     
     void createTicket(Ticket ticket);
     
-    Ticket getBookedTickets(Ticket ticket);
+    Ticket getBookedTickets(Long id);
 
     void cancelTicket(Ticket ticket);
 }

@@ -19,7 +19,7 @@ public class UserService {
         userRepository.createUser(user);
     }
 
-    public User getUser(User user) {
-        return userRepository.getUser(user.getName());
+    public User getUser(String name) {
+        return userRepository.getUser(name);
     }
 }

@@ -10,7 +10,6 @@ import com.spring.mvc.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,10 +22,6 @@ import java.util.Date;
 public class UserController {
 
     private final BookingFacade facade;
-    private User user;
-    private Event event;
-
-    private Ticket ticket;
 
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -47,18 +42,17 @@ public class UserController {
     @RequestMapping("/showUser")
     public String showUserDetail(@RequestParam("name")String name, @RequestParam("id") Long id,
                                  @RequestParam("email") String email, Model model) {
-        user = new UserImpl(name, id, email);
+        User user = new UserImpl(name, id, email);
         facade.createUser(user);
         model.addAttribute("userName", name);
         model.addAttribute("userEmail", email);
-        System.out.println(facade.getUsersByName(user));
         return "show-user.html";
     }
 
     @RequestMapping("/showTicket")
     public String showTicketDetail(@RequestParam("ticketId")Long id, @RequestParam("place") int place, Model model) {
-        ticket = new TicketImpl(id,(EventImpl) facade.getEventsByTitle(event),
-                (UserImpl) facade.getUsersByName(user), place, Ticket.Category.STANDARD);
+        Ticket ticket = new TicketImpl(id,(EventImpl) facade.getEventsByTitle("Title"),
+                (UserImpl) facade.getUsersByName("QA"), place, Ticket.Category.STANDARD);
         facade.createTicket(ticket);
         model.addAttribute("ticketId", id);
         model.addAttribute("ticketPlace", place);
@@ -67,17 +61,16 @@ public class UserController {
 
     @RequestMapping("/showEvent")
     public String showEventDetail(@RequestParam("title")String title, @RequestParam("eventId") Long id, Model model) {
-        event = new EventImpl(id, title, new Date());
+        Event event = new EventImpl(id, title, new Date());
         facade.createEvent(event);
         model.addAttribute("eventTitle", title);
         model.addAttribute("eventId", id);
-        System.out.println(facade.getUsersByName(user));
         return "show-event.html";
     }
 
     @RequestMapping("/deleteTicket")
     public String deleteTicket() {
-        facade.cancelTicket(ticket);
+        facade.cancelTicket(facade.getBookedTickets(4L));
         return "delete-ticket.html";
     }
 }

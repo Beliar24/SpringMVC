@@ -21,8 +21,8 @@ public class BookingFacade implements Booking {
 
 
     @Override
-    public Event getEventsByTitle(Event event) {
-        return eventService.getEvent(event);
+    public Event getEventsByTitle(String title) {
+        return eventService.getEvent(title);
     }
 
     @Override
@@ -31,8 +31,8 @@ public class BookingFacade implements Booking {
     }
 
     @Override
-    public User getUsersByName(User user) {
-        return userService.getUser(user);
+    public User getUsersByName(String name) {
+        return userService.getUser(name);
     }
 
     @Override
@@ -46,8 +46,8 @@ public class BookingFacade implements Booking {
     }
 
     @Override
-    public Ticket getBookedTickets(Ticket ticket) {
-        return ticketService.getTicket(ticket);
+    public Ticket getBookedTickets(Long id) {
+        return ticketService.getTicket(id);
     }
 
     @Override
