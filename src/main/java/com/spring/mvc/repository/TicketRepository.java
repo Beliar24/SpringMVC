@@ -1,11 +1,8 @@
 package com.spring.mvc.repository;
 
-import com.spring.mvc.dao.EventImpl;
 import com.spring.mvc.dao.TicketImpl;
-import com.spring.mvc.model.Event;
 import com.spring.mvc.model.Ticket;
 import com.spring.mvc.storage.DbConfig;
-import com.spring.mvc.storage.Storage;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
