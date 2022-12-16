@@ -14,6 +14,7 @@ public class TicketImpl implements Ticket {
     private EventImpl eventId;
     private UserImpl userId;
     private int place;
+
     private Category category;
 
     @Override

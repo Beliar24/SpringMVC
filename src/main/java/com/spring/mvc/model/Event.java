@@ -14,6 +14,6 @@ public interface Event {
     void setId(long id);
     String getTitle();
     void setTitle(String title);
-    Date getDate();
-    void setDate(Date date);
+    java.sql.Date getDate();
+    void setDate(java.sql.Date date);
 }

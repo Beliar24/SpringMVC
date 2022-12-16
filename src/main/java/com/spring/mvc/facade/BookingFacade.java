@@ -1,20 +1,24 @@
 package com.spring.mvc.facade;
 
+import com.spring.mvc.dao.UserImpl;
 import com.spring.mvc.model.Event;
 import com.spring.mvc.model.Ticket;
 import com.spring.mvc.model.User;
 import com.spring.mvc.service.EventService;
 import com.spring.mvc.service.TicketService;
 import com.spring.mvc.service.UserService;
+import com.spring.mvc.storage.DbConfig;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
+
+import java.sql.*;
 
 @AllArgsConstructor
 @Setter
 @Component
 public class BookingFacade implements Booking {
-    
+
     private EventService eventService;
     private UserService userService;
     private TicketService ticketService;
@@ -31,8 +35,8 @@ public class BookingFacade implements Booking {
     }
 
     @Override
-    public User getUsersByName(String name) {
-        return userService.getUser(name);
+    public User getUsersByName(String username) {
+        return userService.getUser(username);
     }
 
     @Override

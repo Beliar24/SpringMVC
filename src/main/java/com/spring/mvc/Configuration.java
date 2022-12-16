@@ -7,7 +7,7 @@ import com.spring.mvc.repository.UserRepository;
 import com.spring.mvc.service.EventService;
 import com.spring.mvc.service.TicketService;
 import com.spring.mvc.service.UserService;
-import com.spring.mvc.storage.Storage;
+import com.spring.mvc.storage.DbConfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +15,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Description;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
@@ -34,23 +33,18 @@ public class Configuration implements WebMvcConfigurer, ApplicationContextAware 
     }
 
     @Bean
-    public Storage storage() {
-        return new Storage();
-    }
-
-    @Bean
     public UserRepository userRepository() {
-        return new UserRepository(storage());
+        return new UserRepository(dbConfig());
     }
 
     @Bean
     public EventRepository eventRepository() {
-        return new EventRepository(storage());
+        return new EventRepository(dbConfig());
     }
 
     @Bean
     public TicketRepository ticketRepository() {
-        return new TicketRepository(storage());
+        return new TicketRepository(dbConfig());
     }
 
     @Bean
@@ -69,22 +63,16 @@ public class Configuration implements WebMvcConfigurer, ApplicationContextAware 
     }
 
     @Bean
+    public DbConfig dbConfig() {
+        return new DbConfig();
+    }
+
+
+
+    @Bean
     public BookingFacade bookingFacade() {
         return new BookingFacade(eventService(), userService(), ticketService());
     }
-
-//    @Bean
-//    public InternalResourceViewResolver viewResolver() {
-//        InternalResourceViewResolver vr = new InternalResourceViewResolver();
-//
-//        // set location of views.
-//        vr.setPrefix("/WEB-INF/view/");
-//
-//        // set the extension of views.
-//        vr.setSuffix(".jsp");
-//
-//        return vr;
-//    }
 
     @Bean
     @Description("Thymeleaf Template Resolver")

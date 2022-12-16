@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Controller
 @RequestMapping(value = "/")
@@ -61,7 +61,7 @@ public class UserController {
 
     @RequestMapping("/showEvent")
     public String showEventDetail(@RequestParam("title")String title, @RequestParam("eventId") Long id, Model model) {
-        Event event = new EventImpl(id, title, new Date());
+        Event event = new EventImpl(id, title, new Date(2020,12,2));
         facade.createEvent(event);
         model.addAttribute("eventTitle", title);
         model.addAttribute("eventId", id);
@@ -70,7 +70,7 @@ public class UserController {
 
     @RequestMapping("/deleteTicket")
     public String deleteTicket() {
-        facade.cancelTicket(facade.getBookedTickets(4L));
+        facade.cancelTicket(facade.getBookedTickets(1L));
         return "delete-ticket.html";
     }
 }
