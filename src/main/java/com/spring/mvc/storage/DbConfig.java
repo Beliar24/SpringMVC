@@ -19,7 +19,7 @@ public class DbConfig {
     private String driverClassName;
     @Value("${url}")
     private String url;
-    @Value("${username}")
+    @Value("${user_name}")
     private String username;
     @Value("${password}")
     private String password;
@@ -33,10 +33,10 @@ public class DbConfig {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource ret = new DriverManagerDataSource();
-        ret.setDriverClassName("org.postgresql.Driver");
-        ret.setUsername("postgres");
-        ret.setPassword("postgres");
-        ret.setUrl("jdbc:postgresql://localhost:5432/ticketstore");
+        ret.setDriverClassName(driverClassName);
+        ret.setUsername(username);
+        ret.setPassword(password);
+        ret.setUrl(url);
         return ret;
     }
 
