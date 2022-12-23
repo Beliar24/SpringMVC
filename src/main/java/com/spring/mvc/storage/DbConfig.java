@@ -40,6 +40,17 @@ public class DbConfig {
         return ret;
     }
 
+    @Lazy
+    @Bean
+    public DataSource dataSourceForTests() {
+        DriverManagerDataSource ret = new DriverManagerDataSource();
+        ret.setDriverClassName("org.postgresql.Driver");
+        ret.setUsername("postgres");
+        ret.setPassword("postgres");
+        ret.setUrl("jdbc:postgresql://localhost:5432/ticketstore");
+        return ret;
+    }
+
 
 
 
